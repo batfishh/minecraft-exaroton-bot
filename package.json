@@ -1,0 +1,17 @@
+{
+  "name": "minecraft-server-bot",
+  "version": "1.0.0",
+  "description": "A bot that does some informing stuff ",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "test": "test"
+  },
+  "author": "batfish",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^13.8.0",
+    "dotenv": "^16.0.1",
+    "exaroton": "^1.7.2"
+  }
+}
