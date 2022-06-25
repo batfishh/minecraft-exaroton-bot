@@ -1,5 +1,5 @@
 {
-  "name": "minecraft-server-bot",
+  "name": "minecraft-exaroton-bot",
   "version": "1.0.0",
   "description": "A bot that does some informing stuff ",
   "main": "index.js",
@@ -12,6 +12,7 @@
   "dependencies": {
     "discord.js": "^13.8.0",
     "dotenv": "^16.0.1",
-    "exaroton": "^1.7.2"
+    "exaroton": "^1.7.2",
+    "nodemon": "^2.0.18"
   }
 }
