@@ -17,7 +17,7 @@ async function monitorServer() {
       const log = data.line;
       let startIndex = data?.line.indexOf(`]: `);
       let endIndex = data?.line.indexOf(`joined`);
-      const playerName = log.substring(startIndex + 1, endIndex);
+      const playerName = log.substring(startIndex + 2, endIndex-1);
       sendMessageToChannel(
         process.env.DISCORD_CHANNEL_ID,
         `${playerName} has joined and is now playing!`
