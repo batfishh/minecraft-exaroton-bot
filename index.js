@@ -9,7 +9,7 @@ const client = new Client(token);
 
 async function monitorServer() {
   let server = client.server(serverId);
-  server.subscribe("console");
+  server.subscribe(["console", "status"]);
   server.on("console:line", function (data) {
     // Log entry if a new player joins
 
@@ -17,18 +17,10 @@ async function monitorServer() {
       const log = data.line;
       let startIndex = data?.line.indexOf(`]: `);
       let endIndex = data?.line.indexOf(`joined`);
-      const playerName = log.substring(startIndex + 2, endIndex-1);
+      const playerName = log.substring(startIndex + 2, endIndex - 1);
       sendMessageToChannel(
         process.env.DISCORD_CHANNEL_ID,
         `${playerName} has joined and is now playing!`
-      );
-    }
-
-    // Log entry if server starts
-    if (data.line.match(/Preparing start region for dimension minecraft/g)) {
-      sendMessageToChannel(
-        process.env.DISCORD_CHANNEL_ID,
-        `Server is up! Join now!`
       );
     }
 
@@ -46,6 +38,25 @@ async function monitorServer() {
             console.log("Error : pinning message");
           });
       }
+    }
+  });
+
+  //Monitor Start and Stop
+
+  server.on("status", (server) => {
+    switch (server.status) {
+      case 2:
+        sendMessageToChannel(
+          process.env.DISCORD_CHANNEL_ID,
+          `Server is starting! Join now!`
+        );
+        break;
+      case 3:
+        sendMessageToChannel(
+          process.env.DISCORD_CHANNEL_ID,
+          `Server Stopping :( See y'all later!`
+        );
+        break;
     }
   });
 }
