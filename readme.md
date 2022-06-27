@@ -1,4 +1,4 @@
-# Minecraft Exaroton Bot
+# Minecraft Exaroton Bot 
 
 This NodeJS app can be used to monitor an exaroton minecraft server. Currently supports features like sending a message to a discord channel whenever the server starts , or when a player joins.
 
